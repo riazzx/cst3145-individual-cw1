@@ -1,0 +1,72 @@
+*{
+    
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    overflow-x: hidden;
+    background: rgb(0,112,240);
+    background: linear-gradient(180deg, rgba(0,112,240,1) 35%, rgba(181,181,181,0.5130427170868348) 100%);
+}
+
+#navbar{
+/* From https://css.glass */
+background: rgba(204, 148, 183, 0.73);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10.6px);
+-webkit-backdrop-filter: blur(10.6px);
+}
+
+#lessons {
+    margin-top: 10%;
+    padding-left: 1%;
+    padding-right: 1%;
+
+}
+
+#lesson {
+    /* From https://css.glass */
+color: #1a1a1a;
+background: rgba(255, 255, 255, 0.219);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.7px);
+-webkit-backdrop-filter: blur(5.7px);
+border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+
+#banner {
+    border-radius: 0px;
+    height: 500px;
+    /* margin-top: 3%; */
+    width: 100%;
+    background-image: linear-gradient(to bottom, transparent 0%, #0070f0 80%, #0070f0  55%), url("banner.jpg");
+    background-repeat: no-repeat;
+    margin: 0;
+    border: 0;
+}
+
+#banner-title {
+    margin-top: 15%;
+    text-align: center;
+    font-size: xxx-large;
+}
+
+#banner-text{
+    text-align: center;
+}
+
+#banner-button{
+    align-content: center;
+    
+}
+
+#banner-button:hover {
+    color: #0070f0;
+}
