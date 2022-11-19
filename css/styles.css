@@ -76,6 +76,13 @@ border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 
+/* sot label */
+.sort-label{
+    color: #fff;
+    margin-bottom: 0px;
+    margin-top: 8px;
+}
+
 
 /* FOOTER CSS */
 

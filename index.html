@@ -66,6 +66,37 @@
             </div>
           </div>
 
+          <div  class="btn-toolbar justify-content-evenly" role="toolbar">
+            <p class="sort-label">Sort By:</p>
+            <div class="btn-group" role="group" name="sortBy" aria-label="Basic radio toggle button group 1">
+              
+              <input type="radio" class="btn-check" value="subject" name="btnradio" id="btnradio1" autocomplete="off" checked>
+              <label class="btn btn-outline-warning" for="btnradio1">Subject</label>
+            
+              <input type="radio" class="btn-check" value="location" name="btnradio" id="btnradio2" autocomplete="off">
+              <label class="btn btn-outline-warning" for="btnradio2">Location</label>
+            
+              <input type="radio" class="btn-check" value="price" name="btnradio" id="btnradio3" autocomplete="off">
+              <label class="btn btn-outline-warning" for="btnradio3">Price</label>
+
+              <input type="radio" class="btn-check" value="availability" name="btnradio" id="btnradio4" autocomplete="off">
+              <label class="btn btn-outline-warning" for="btnradio4">Availability</label>
+            </div>
+
+            <p class="sort-label"> Sort In:</p>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group 2">
+              <input type="radio" class="btn-check" name="btnradio2" id="btnradio5" autocomplete="off" checked>
+              <label class="btn btn-outline-warning" for="btnradio5">Ascending</label>
+            
+              <input type="radio" class="btn-check" name="btnradio2" id="btnradio6" autocomplete="off">
+              <label class="btn btn-outline-warning" for="btnradio6">Descending</label>
+
+            </div>
+          </div>
+         
+
+
+
           <div class="row row-cols-1 row-cols-md-3 g-3" id="lessons">
 
             <div v-for="lesson in lessons">
