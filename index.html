@@ -196,7 +196,7 @@
                 this.showLessons = this.showLessons ? false : true;
               },
               addToCart(lesson){
-                this.cart.push(lesson.id)
+                this.cart.push(lesson);
                 lesson.availableLessons--;
               },
               canAddToCart(lesson) {
