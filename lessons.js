@@ -6,7 +6,8 @@ lessons = [
         price: 100 ,
         location: "Dubai",
         image: "assets/idea.png",
-        availableLessons: 10
+        totalLessons: 10,
+        availableLessons: 5
     },
     {
         id: 1002,
@@ -15,7 +16,8 @@ lessons = [
         price: 200,
         location: "Abu Dhabi",
         image: "assets/science.png",
-        availableLessons: 10
+        totalLessons: 10,
+        availableLessons: 5
     },
     {
         id: 1003,
@@ -24,7 +26,8 @@ lessons = [
         price: 400,
         location: "Sharjah",
         image: "assets/coding.png",
-        availableLessons: 10
+        totalLessons: 10,
+        availableLessons: 5
     },
     {
         id: 1004,
@@ -33,7 +36,8 @@ lessons = [
         price: 300,
         location: "Dubai",
         image: "assets/cooking.png",
-        availableLessons: 10
+        totalLessons: 10,
+        availableLessons: 5
     },
     {
         id: 1005,
@@ -42,7 +46,8 @@ lessons = [
         price: 650,
         location: "Abu Dhabi",
         image: "assets/knitting.png",
-        availableLessons: 10
+        totalLessons: 10,
+        availableLessons: 5
     },
     {
         id: 1006,
@@ -51,7 +56,8 @@ lessons = [
         price: 700,
         location: "Sharjah",
         image: "assets/pottery.png",
-        availableLessons: 10
+        totalLessons: 10,
+        availableLessons: 5
     },
     {
         id: 1007,
@@ -60,7 +66,8 @@ lessons = [
         price: 600,
         location: "Fujairah",
         image: "assets/singing.png",
-        availableLessons: 10
+        totalLessons: 10,
+        availableLessons: 5
     },
     {
         id: 1008,
@@ -69,7 +76,8 @@ lessons = [
         price: 800,
         location: "Dubai",
         image: "assets/dance.png",
-        availableLessons: 10
+        totalLessons: 10,
+        availableLessons: 5
     },
     {
         id: 1009,
@@ -78,7 +86,8 @@ lessons = [
         price: 900,
         location: "Fujairah",
         image: "assets/clapperboard.png",
-        availableLessons: 10
+        totalLessons: 10,
+        availableLessons: 5
     },
     {
         id: 1010,
@@ -87,7 +96,8 @@ lessons = [
         price: 1000,
         location: "Sharjah",
         image: "assets/musical-note.png",
-        availableLessons: 10
+        totalLessons: 10,
+        availableLessons: 5
     }
    
 
