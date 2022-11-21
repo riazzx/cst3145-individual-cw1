@@ -168,16 +168,16 @@
                 <h5>Checkout</h5>
                 <div class="mb-3 mt-3">
                   <label for="name" class="form-label">Name:</label>
-                  <input type="text" v-model="order.name" class="form-control" id="name" placeholder="Enter name" name="name" v-on:keypress="validateName($event)">
+                  <input type="text" v-model="order.name" class="form-control"  placeholder="Enter name" v-on:keypress="validateName($event)">
                 </div>
                 <div class="mb-3">
                   <label for="pnumber" class="form-label">Phone Number:</label>
-                  <input type="text" v-model="order.number" class="form-control" id="pnumber" placeholder="Enter Phone Number" name="pnumber" v-on:keypress="validateNumber($event)">
+                  <input type="text" v-model="order.number" class="form-control" id="pnumber" placeholder="Enter Phone Number"  v-on:keypress="validateNumber($event)">
                 </div>
                 <p class="text-danger">{{order.validationMessage}}</p>
                
                 <button v-if="formValidated" v-on:click="placeOrder" type="submit" class="btn btn-primary">Place Order</button>
-                <button v-else  disabled="disabled" type="submit" class="btn btn-primary">Place Order</button>
+                <button v-else  disabled="disabled" class="btn btn-primary">Place Order</button>
 
               </form>
             </div>
@@ -239,8 +239,8 @@
                 cart: [],
                 showLessons: true,
                 order: {
-                  name: "",
-                  number: "",
+                  name: '',
+                  number: '',
                   validationMessage: ""
                 }
             },
@@ -276,7 +276,9 @@
               },
               validateName(e) {
                 let letter = String.fromCharCode(e.keyCode)
-
+                if (!this.order.name){
+                  this.order.validationMessage = "Fill All Fields"
+                }  
                 if(/^[A-Za-z]+$/.test(letter)){
                         this.order.validationMessage = "";
                         return true;
@@ -287,6 +289,9 @@
                     } 
               },
               validateNumber(e) {
+                if (!this.order.number){
+                  this.order.validationMessage = "Fill All Fields"
+                } 
                 if(e.charCode >= 48 && e.charCode <= 57){
                   this.order.validationMessage = "";
                   return true;
@@ -295,9 +300,8 @@
                 }
               },
               formValidated(){
-                if (this.order.validationMessage !== '') {
-                  return true
-                }
+                 validateName = validateName? true:false ;
+                
 
               },
               placeOrder() {
