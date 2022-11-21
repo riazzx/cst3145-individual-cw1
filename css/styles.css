@@ -55,6 +55,32 @@ border: 1px solid rgba(255, 255, 255, 0.5);
     border: 0;
 }
 
+/* cart empty banner */
+#cart-empty {
+    border-radius: 0px;
+    height: 500px;
+    /* margin-top: 3%; */
+    width: 100%;
+    background-image: linear-gradient(to bottom, transparent 0%, #0070f0 80%, #0070f0  55%);
+    background-repeat: no-repeat;
+    margin: 0;
+    border: 0;
+}
+
+#checkout-form {
+    /* From https://css.glass */
+color: #fff;
+background: rgba(255, 255, 255, 0.219);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.7px);
+-webkit-backdrop-filter: blur(5.7px);
+border: 1px solid rgba(255, 255, 255, 0.5);
+width: 100%;
+padding: 4%;
+max-height: fit-content;
+}
+
 #banner-title {
     margin-top: 15%;
     text-align: center;
@@ -89,6 +115,10 @@ border: 1px solid rgba(255, 255, 255, 0.5);
     background-color: #f08000;
 }
 
+
+.checkout-form {
+    width: 30%;
+}
 
 /* FOOTER CSS */
 

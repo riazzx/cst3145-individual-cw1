@@ -32,27 +32,31 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                  </li>
+                 
                   
                 </ul>
 
-                <form class="d-flex" role="search">
-                  <input class="form-control me-2 bg-light" type="search" placeholder="Search" aria-label="Search" v-model="searchValue" id="search-input">
-                  <!-- <button class="btn btn-warning" type="submit">Search</button> -->
+                <div class="col-md-8">
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-4 bg-light" type="search" placeholder="Search" aria-label="Search" v-model="searchValue" id="search-input">
+                    <!-- <button class="btn btn-warning">Search</button> -->
+                  
+                </div>
                   
                     
                 
                 </form>
                 <ul class="navbar-nav  me-2">
                     <li class="nav-item">
-                      <a class="nav-link" v-on:click="showCart">{{cartItemCount}}Cart</a>
+                      <a class="nav-link" v-on:click="showCart" v-if="cartItemCount >= 1">  Cart <span class="badge bg-secondary">{{cartItemCount}}</span></a>
+                      <a class="nav-link" v-else> Cart</a>
                     </li>
                 </ul>
               </div>
             </div>
           </nav>
+
+          <div v-if="showLessons">
 
           <div class="card text-bg-dark" id="banner">
             <div class="card-img-overlay" >
@@ -66,35 +70,7 @@
             </div>
           </div>
 
-          <!-- <div  class="btn-toolbar justify-content-evenly" role="toolbar">
-            <p class="sort-label">Sort By:</p>
-            <div class="btn-group" role="group" name="sortBy" aria-label="Basic radio toggle button group 1">
-              
-              <input type="radio" class="btn-check" value="subject" name="btnradio" id="btnradio1" autocomplete="off" checked>
-              <label class="btn btn-outline-warning" for="btnradio1">Subject</label>
-            
-              <input type="radio" class="btn-check" value="location" name="btnradio" id="btnradio2" autocomplete="off">
-              <label class="btn btn-outline-warning" for="btnradio2">Location</label>
-            
-              <input type="radio" class="btn-check" value="price" name="btnradio" id="btnradio3" autocomplete="off">
-              <label class="btn btn-outline-warning" for="btnradio3">Price</label>
-
-              <input type="radio" class="btn-check" value="availability" name="btnradio" id="btnradio4" autocomplete="off">
-              <label class="btn btn-outline-warning" for="btnradio4">Availability</label>
-            </div>
-
-            <p class="sort-label"> Sort In:</p>
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group 2">
-              <input type="radio" class="btn-check" name="btnradio2" id="btnradio5" autocomplete="off" checked>
-              <label class="btn btn-outline-warning" for="btnradio5">Ascending</label>
-            
-              <input type="radio" class="btn-check" name="btnradio2" id="btnradio6" autocomplete="off">
-              <label class="btn btn-outline-warning" for="btnradio6">Descending</label>
-
-            </div>
-          </div> -->
-
-          <div v-if="showLessons">
+         
 
          
           <div  class="btn-toolbar justify-content-evenly" role="toolbar">
@@ -152,7 +128,79 @@
         </div>
 
 
-          <div v-else></div>
+          <div v-else>
+
+            <div class="card text-bg-dark" id="banner">
+              <div class="card-img-overlay" >
+                <h5 id="banner-title" class="card-title">CHECKOUT</h5>
+              </div>
+            </div>
+
+            <div  class="row row-cols-2 row-cols-md-2 g-3" id="lessons" v-if="this.cart.length > 0">
+              <div class="row row-cols-1 row-cols-md-1 g-2">
+
+              
+              <div v-for="lesson in this.cart">
+                <div id="lesson" class="card mb-1">
+                  <div class="row g-0">
+                    <div class="col-md-4 p-4">
+                      <img v-bind:src="lesson.image" class="img-fluid rounded-start" alt="Math Lesson Icon">
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card-body">
+                        <h5 class="card-title text-light" v-text="lesson.title"></h5>
+                       
+                        <p class="card-text text-light" >Cost: <b>{{lesson.price}}</b>  dhs/month.</p>
+                        <p class="card-text text-light"><small class="text-light--muted"  >Location: {{lesson.location}}</small></p>
+                        
+                        <button v-on:click="removeFromCart(lesson)" type="button" class="btn btn-outline-danger"> Remove from cart</button>
+                        
+
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              </div>
+            </div>
+            <div >
+              <form id="checkout-form">
+                <h5>Checkout</h5>
+                <div class="mb-3 mt-3">
+                  <label for="name" class="form-label">Name:</label>
+                  <input type="text" v-model="order.name" class="form-control" id="name" placeholder="Enter name" name="name" v-on:keypress="validateName($event)">
+                </div>
+                <div class="mb-3">
+                  <label for="pnumber" class="form-label">Phone Number:</label>
+                  <input type="text" v-model="order.number" class="form-control" id="pnumber" placeholder="Enter Phone Number" name="pnumber" v-on:keypress="validateNumber($event)">
+                </div>
+                <p class="text-danger">{{order.validationMessage}}</p>
+               
+                <button v-if="formValidated" v-on:click="placeOrder" type="submit" class="btn btn-primary">Place Order</button>
+                <button v-else  disabled="disabled" type="submit" class="btn btn-primary">Place Order</button>
+
+              </form>
+            </div>
+             
+            </div>
+
+            
+
+            <!-- <div class="card bg-transpatent" v-else>
+              <h5 id="banner-title" class="card-title">OOPS... THE CART IS EMPTY!</h5>
+              <p>Oops... The Cart is Empty!</p>
+                <button v-on:click="showCart" class="btn btn-warning">Add Lessons</button>
+            </div> -->
+
+            <div class="card text-bg-dark" id="cart-empty" v-else>
+              <div  class="card-img-overlay" >
+                <h5 id="banner-title" class="card-title">OOPS.. THE CART IS EMPTY</h5>
+                <button  type="button"   v-on:click="showCart" class="btn btn-lg btn-warning align-content-center">Add Lessons</button>
+              </div>
+            </div>
+
+
+          </div>
 
 
 
@@ -189,7 +237,12 @@
                 ascending: true,
                 sortBy: 'subject',
                 cart: [],
-                showLessons: true
+                showLessons: true,
+                order: {
+                  name: "",
+                  number: "",
+                  validationMessage: ""
+                }
             },
             methods: {
               showCart() {
@@ -210,12 +263,52 @@
                   }
                 }
                 return count;
+              },
+              removeFromCart(lesson) {
+                let count = 1;
+                lesson.availableLessons++;
+                for(let i = 0; i <= this.cart.length; i++){
+                  if(this.cart[i].id === lesson.id){
+                    this.cart.splice(i,1);
+                    break;
+                  }
+                }
+              },
+              validateName(e) {
+                let letter = String.fromCharCode(e.keyCode)
+
+                if(/^[A-Za-z]+$/.test(letter)){
+                        this.order.validationMessage = "";
+                        return true;
+                    }  
+                    else{
+                       
+                        this.order.validationMessage = "Enter Alphabets Only!";
+                    } 
+              },
+              validateNumber(e) {
+                if(e.charCode >= 48 && e.charCode <= 57){
+                  this.order.validationMessage = "";
+                  return true;
+                } else {
+                  this.order.validationMessage = "Enter Numbers Only!";
+                }
+              },
+              formValidated(){
+                if (this.order.validationMessage !== '') {
+                  return true
+                }
+
+              },
+              placeOrder() {
+                alert("Order Placed Successfully!");
               }
             },
             computed: {
               cartItemCount() {
                 return this.cart.length || ''
               },
+              
               sortedLessons() {
                 let lessonsArray = this.lessons.slice(0);
 
