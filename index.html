@@ -274,20 +274,6 @@
                   }
                 }
               },
-              validateName(e) {
-                let letter = String.fromCharCode(e.keyCode)
-                if (!this.order.name){
-                  this.order.validationMessage = "Fill All Fields"
-                }  
-                if(/^[A-Za-z]+$/.test(letter)){
-                        this.order.validationMessage = "";
-                        return true;
-                    }  
-                    else{
-                       
-                        this.order.validationMessage = "Enter Alphabets Only!";
-                    } 
-              },
               validateNumber(e) {
                 if (!this.order.number){
                   this.order.validationMessage = "Fill All Fields"
