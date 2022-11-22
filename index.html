@@ -19,11 +19,12 @@
     <title>After School</title>
 </head>
 <body>
-    
+    <!-- mount vue instance -->
     <div id="app">
+      <!-- navbar -->
         <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">After School</a>
+              <a class="navbar-brand" href="index.html">After School</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -32,19 +33,13 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                   </li>
-                 
-                  
                 </ul>
 
                 <div class="col-md-8">
                   <form class="d-flex" role="search">
                     <input class="form-control me-4 bg-light" type="search" placeholder="Search" aria-label="Search" v-model="searchValue" id="search-input">
-                    <!-- <button class="btn btn-warning">Search</button> -->
-                  
                 </div>
                   
-                    
-                
                 </form>
                 <ul class="navbar-nav  me-2">
                     <li class="nav-item">
@@ -56,23 +51,22 @@
             </div>
           </nav>
 
+          <!-- show lessons page -->
           <div v-if="showLessons">
-
+            <!-- banner -->
           <div class="card text-bg-dark" id="banner">
             <div class="card-img-overlay" >
               <h5 id="banner-title" class="card-title">AFTER SCHOOL</h5>
               <p  id="banner-text" class="card-text">Classes for your kids to learn exciting, new things after school.</p>
               <div class="text-center">
                 <button id="banner-button" type="button" class="btn   btn-lg " onClick="document.getElementById('lessons').scrollIntoView();">Book a Lesson</button>
-              </div>
-              
-              
+              </div>  
             </div>
           </div>
 
          
 
-         
+         <!-- sort and filter toolbar -->
           <div  class="btn-toolbar justify-content-evenly" role="toolbar">
             
                <p class="sort-label">Sort By:</p>
@@ -98,9 +92,9 @@
          
 
 
-
+          <!-- lessons cards  -->
           <div class="row row-cols-1 row-cols-md-3 g-3" id="lessons">
-              
+              <!-- for loop to display all lessons -->
             <div v-for="lesson in sortedLessons">
                 <div id="lesson" class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
@@ -116,30 +110,28 @@
                           <p class="card-text text-light"><small class="text-light--muted">Spaces: {{lesson.availableLessons}}</small></p>
                           <button v-on:click="addToCart(lesson)" v-if='canAddToCart(lesson)' type="button" class="btn btn-outline-warning"><span class="fas fa-cart-plus"></span> Add to cart</button>
                           <button disabled="disabled" v-else type="button" class="btn btn-secondary"><span class="fas fa-cart-plus"></span> Add to cart</button>
-
                         </div>
                       </div>
                     </div>
                 </div>
-
             </div>
           </div>
-
         </div>
 
-
+          <!-- show cart -->
           <div v-else>
-
+            <!-- checkout banner -->
             <div class="card text-bg-dark" id="banner">
               <div class="card-img-overlay" >
                 <h5 id="banner-title" class="card-title">CHECKOUT</h5>
               </div>
             </div>
 
+            <!-- show cart items -->
             <div  class="row row-cols-2 row-cols-md-2 g-3" id="lessons" v-if="this.cart.length > 0">
               <div class="row row-cols-1 row-cols-md-1 g-2">
 
-              
+              <!-- lessons added in cart -->
               <div v-for="lesson in this.cart">
                 <div id="lesson" class="card mb-1">
                   <div class="row g-0">
@@ -149,21 +141,18 @@
                     <div class="col-md-6">
                       <div class="card-body">
                         <h5 class="card-title text-light" v-text="lesson.title"></h5>
-                       
                         <p class="card-text text-light" >Cost: <b>{{lesson.price}}</b>  dhs/month.</p>
                         <p class="card-text text-light"><small class="text-light--muted"  >Location: {{lesson.location}}</small></p>
-                        
                         <button v-on:click="removeFromCart(lesson)" type="button" class="btn btn-outline-danger"> Remove from cart</button>
-                        
-
                       </div>
                     </div>
                   </div>
               </div>
-
               </div>
             </div>
-            <div >
+
+            <!-- checkout form -->
+            <div>
               <form id="checkout-form">
                 <h5>Checkout</h5>
                 <div class="mb-3 mt-3">
@@ -178,28 +167,18 @@
                
                 <button v-if="formValidated" v-on:click="placeOrder"  class="btn btn-primary">Place Order</button>
                 <button v-else  disabled="disabled" class="btn btn-primary">Place Order</button>
-
               </form>
             </div>
              
             </div>
 
-            
-
-            <!-- <div class="card bg-transpatent" v-else>
-              <h5 id="banner-title" class="card-title">OOPS... THE CART IS EMPTY!</h5>
-              <p>Oops... The Cart is Empty!</p>
-                <button v-on:click="showCart" class="btn btn-warning">Add Lessons</button>
-            </div> -->
-
+            <!-- show cart empty if all items removed from cart -->
             <div class="card text-bg-dark" id="cart-empty" v-else>
               <div  class="card-img-overlay" >
                 <h5 id="banner-title" class="card-title">OOPS.. THE CART IS EMPTY</h5>
                 <button  type="button"   v-on:click="showCart" class="btn btn-lg btn-warning align-content-center">Add Lessons</button>
               </div>
             </div>
-
-
           </div>
 
 
@@ -212,7 +191,7 @@
           <!-- FOOTER -->
           <footer>
             <div class="copyright">
-              <p id="copyr">&copy 2022 - CST3340 Coursework 1 by zx</p>
+              <p id="copyr">&copy 2022 - CST3145 Coursework 1 by zx</p>
             </div>
             <div class="social">
               <a id="link" href="#" class="support">Contact Us</a>
@@ -226,12 +205,13 @@
           
     </div>
 
+    <!-- import lessons.js -->
     <script src="lessons.js"></script>
     <script>
+      // create new vue instance
         var app = new Vue ({
             el: '#app',
             data: {
-               
                 searchValue: '',
                 lessons: lessons,
                 ascending: true,
@@ -245,16 +225,20 @@
                 }
             },
             methods: {
+              // toggle between cart and homepage
               showCart() {
                 this.showLessons = this.showLessons ? false : true;
               },
+              // add lesson to cart
               addToCart(lesson){
                 this.cart.push(lesson);
                 lesson.availableLessons--;
               },
+              // check if item can be added to cart
               canAddToCart(lesson) {
                 return lesson.availableLessons > this.cartCount(lesson.id)
               },
+              // check number of items in cart
               cartCount(id) {
                 let count = 0;
                 for(let i=0; i < this.cart.length; i++){
@@ -264,6 +248,7 @@
                 }
                 return count;
               },
+              // remove lesson from cart
               removeFromCart(lesson) {
                 let count = 1;
                 lesson.availableLessons++;
@@ -274,29 +259,26 @@
                   }
                 }
               },
+              // show order placed alert
               placeOrder() {
                 alert("Order Placed Successfully!");
               }
             },
             computed: {
+              // check number of items in cart
               cartItemCount() {
                 return this.cart.length || ''
               },
+              // regex to check checkout form to enable place order button
               formValidated(){
                  const letters = /^[A-Za-z]+$/;
                  const numbers = /^[0-9]+$/;
 
                  if (this.order.name.match(letters) && this.order.number.match(numbers)) {
                   return true;
-                 }
-                //  return 
-
-                //   (letters.test(this.order.name) && numbers.test(this.order.number));
-                 
-                
-
+                 }             
                 },
-              
+              // sort lessons
               sortedLessons() {
                 let lessonsArray = this.lessons.slice(0);
 
@@ -305,7 +287,7 @@
                   lessonsArray = lessonsArray.filter((item) => {
                     return item.title
                       .toUpperCase()
-                        .includes(this.searchValue.toUpperCase())
+                        .includes(this.searchValue.toUpperCase()) || item.location.toUpperCase().includes(this.searchValue.toUpperCase())
                   })
                 }
                 
