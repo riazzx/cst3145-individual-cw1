@@ -310,10 +310,14 @@
               },
               formValidated(){
                  const letters = /^[A-Za-z]+$/;
-                 const numbers = /^[0-9]{10}$/;
+                 const numbers = /^[0-9]+$/;
 
-                 return 
-                  (letters.test(this.order.name) && numbers.test(this.order.number));
+                 if (this.order.name.match(letters) && this.order.number.match(numbers)) {
+                  return true;
+                 }
+                //  return 
+
+                //   (letters.test(this.order.name) && numbers.test(this.order.number));
                  
                 
 
