@@ -274,18 +274,6 @@
                   }
                 }
               },
-              validateNumber(e) {
-                if (!this.order.number){
-                  this.order.validationMessage = "Fill All Fields"
-                } 
-                if(e.charCode >= 48 && e.charCode <= 57){
-                  this.order.validationMessage = "";
-                  return true;
-                } else {
-                  this.order.validationMessage = "Enter Numbers Only!";
-                }
-              },
-             
               placeOrder() {
                 alert("Order Placed Successfully!");
               }
