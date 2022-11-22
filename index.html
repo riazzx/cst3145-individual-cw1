@@ -287,7 +287,10 @@
                   lessonsArray = lessonsArray.filter((item) => {
                     return item.title
                       .toUpperCase()
-                        .includes(this.searchValue.toUpperCase()) || item.location.toUpperCase().includes(this.searchValue.toUpperCase())
+                        .includes(this.searchValue.toUpperCase()) 
+                        || item.location
+                        .toUpperCase()
+                        .includes(this.searchValue.toUpperCase())
                   })
                 }
                 
